@@ -1,5 +1,5 @@
 %% SETUP
-clear;% clc;
+clear; clc;
 %% INPUT
 x=[ .01 , .05 , .1 , .5 , 1 , 5 , 10 , 50 , 100 ];
 y=[ 6.078e-11, ...
@@ -17,6 +17,8 @@ xlin = 1./x.^3;
 ylin = 1./y;
 
 %% CHAMADA DE FUNCAO
+% !!!Mude o ultimo parametro de true para false para 
+% !!!alterar o método de achar o modelo
 [km,k] = minimos_quadrados(xlin,ylin,true);
 Ymod=(km.*(x.^3))./(k+(x.^3));
 
@@ -32,4 +34,4 @@ title(['a0 = ' num2str(1/km) ';a1 = ' num2str(k*km)]);
 %% CALCULO DE R2
 sr=sum((y-Ymod).^2);
 r2=1-sr/sum((y-mean(y)).^2);
-fprintf('O valor de R^2 �: %d \n', r2);
+fprintf('O valor de R^2 e: %d \n', r2);
