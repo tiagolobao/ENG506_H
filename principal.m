@@ -12,12 +12,11 @@ y=[ 6.078e-11, ...
     2.431e-5, ...
     2.431e-5  ];
 
-%% LINEARIZAÇÃO DA FUNÇÃO
+%% LINEARIZACAO DA FUNCAO
 xlin = 1./x.^3;
 ylin = 1./y;
 
-%% ---------------------- LETRA (A) ----------------------------- %%
-%% CHAMADA DE FUNÇÃO
+%% CHAMADA DE FUNCAO
 [km,k] = minimos_quadrados(xlin,ylin,true);
 Ymod=(km.*(x.^3))./(k+(x.^3));
 
@@ -33,4 +32,4 @@ title(['a0 = ' num2str(1/km) ';a1 = ' num2str(k*km)]);
 %% CALCULO DE R2
 sr=sum((y-Ymod).^2);
 r2=1-sr/sum((y-mean(y)).^2);
-fprintf('O valor de R^2 é: %d \n', r2);
+fprintf('O valor de R^2 ï¿½: %d \n', r2);
