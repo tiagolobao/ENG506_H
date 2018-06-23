@@ -7,7 +7,7 @@
 %  ''               = false => utiliza o metodo dos minimos quadrados
 
 
-function [ km,k ] = minimos_quadrados( xlin,ylin, fminsearchChoose )
+function [ a0,a1 ] = minimos_quadrados( xlin,ylin, fminsearchChoose )
 
     nx=length(xlin);
     ny=length(ylin);
@@ -28,9 +28,8 @@ function [ km,k ] = minimos_quadrados( xlin,ylin, fminsearchChoose )
                            'TolX',1e-6 );      ... %Valor de tolerancia X
         c=[0 0]; %Chute inicial
         [opt,fval,exitflag]=fminsearch(funObj,c,options);
-
-        km = 1/opt(2);
-        k = opt(1)/opt(2);
+        a0 = opt(2);
+        a1 = opt(1);
 
     else
         Sx = sum(xlin);
@@ -40,10 +39,8 @@ function [ km,k ] = minimos_quadrados( xlin,ylin, fminsearchChoose )
         Sxx=sum(xlin.^2);
 
         a1=(nx*Sxy-Sx*Sy)/(nx*Sxx-Sx.^2); %slope
-        a0=(Sxx*Sy-Sxy*Sx)/((nx*Sxx)-(Sx.^2)); %intercept
+        a0=(Sxx*Sy-Sxy*Sx)/(nx*Sxx-Sx.^2); %intercept
 
-        km=1/a0;
-        k=a1/a0;
     end
 
 end

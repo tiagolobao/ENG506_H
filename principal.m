@@ -17,9 +17,11 @@ xlin = 1./x.^3;
 ylin = 1./y;
 
 %% CHAMADA DE FUNCAO
-% !!!Mude o ultimo parametro de true para false para 
+% !!!Mude o ultimo parametro de true para false para
 % !!!alterar o método de achar o modelo
-[km,k] = minimos_quadrados(xlin,ylin,true);
+[a0,a1] = minimos_quadrados(xlin,ylin,true);
+km=1/a0;
+k=a1/a0;
 Ymod=(km.*(x.^3))./(k+(x.^3));
 
 
@@ -28,7 +30,7 @@ plot(x,y,'markersize',5);
 hold on; grid on;
 plot(x,Ymod,'k');
 xlabel('S (M)'); ylabel('V0 (M/s)');
-title(['a0 = ' num2str(1/km) ';a1 = ' num2str(k*km)]);
+title(['a0 = ' num2str(a0) ';a1 = ' num2str(a1)]);
 
 
 %% CALCULO DE R2
