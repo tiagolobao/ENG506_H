@@ -18,7 +18,7 @@ ylin = 1./y;
 
 %% CHAMADA DE FUNCAO
 % !!!Mude o ultimo parametro de true para false para
-% !!!alterar o método de achar o modelo
+% !!!alterar o metodo de achar o modelo
 [a0,a1] = minimos_quadrados(xlin,ylin,true);
 km=1/a0;
 k=a1/a0;
