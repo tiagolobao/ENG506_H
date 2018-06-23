@@ -32,8 +32,8 @@ plot(x,Ymod,'k');
 xlabel('S (M)'); ylabel('V0 (M/s)');
 title(['a0 = ' num2str(a0) ';a1 = ' num2str(a1)]);
 
-
 %% CALCULO DE R2
-sr=sum((y-Ymod).^2);
-r2=1-sr/sum((y-mean(y)).^2);
+SQRes = sum( (Ymod-y).^2 );
+SQtot = sum( (y-mean(y)).^2 );
+r2 = 1 - (SQRes/SQtot);
 fprintf('O valor de R^2 e: %d \n', r2);
